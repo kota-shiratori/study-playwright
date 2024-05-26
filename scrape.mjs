@@ -1,7 +1,7 @@
 import { chromium } from "playwright";
 
 //ブラウザが立ち上がる
-const browser = await chromium.launch();
+const browser = await chromium.launch({headless:false});
 
 //新しいページを立ち上げる
 const page = await browser.newPage();
@@ -13,3 +13,6 @@ await page.goto("https://swan-room.com/");
 const htmlStr = await page.content();
 
 console.log(htmlStr);
+
+//ブラウザを閉じる
+await browser.close();
